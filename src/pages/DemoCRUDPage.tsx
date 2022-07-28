@@ -1,6 +1,5 @@
-import React, { useState } from "react"
+import React from "react"
 import CRUD from "../components/CRUD"
-import CRUDProvider from "../components/CRUD/hooks/CRUDProvider"
 import { listData } from "../components/CRUD/mock-data"
 import { Avatar, Image } from "antd"
 
