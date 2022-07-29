@@ -2,35 +2,43 @@ export const listData = {
     rows: [
         {
             id: "1",
-            name: "abcd"
+            name: "John",
+            age: '18',
+            address: "TPHCM"
         },
+        // {
+        //     "id": "2",
+        //     "name": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
+        // },
         {
-            "id": "2",
-            "name": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
+            id: "2",
+            name: "Cena",
+            age: '18',
+            address: "HN"
         },
         {
             id: "3",
-            name: "asdf"
+            name: "Batista",
+            age: '18',
+            address: "DN"
         },
         {
             id: "4",
-            name: "abcd"
+            name: "Jobby",
+            age: '18',
+            address: "TPHCM"
         },
         {
             id: "5",
-            name: "abcd"
+            name: "May",
+            age: '18',
+            address: "HN"
         },
         {
             id: "6",
-            name: "abcd"
-        },
-        {
-            id: "7",
-            name: "abcd"
-        },
-        {
-            id: "8",
-            name: "abcd"
+            name: "Jok",
+            age: '18',
+            address: "HN"
         },
     ],
     "page": 1,

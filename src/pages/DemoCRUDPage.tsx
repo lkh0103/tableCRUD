@@ -18,6 +18,21 @@ export function DemoCRUDPage() {
         {
             title: 'Name',
             dataIndex: 'name',
+            key: 'name'
+        },
+        {
+            title: 'Age',
+            dataIndex: 'age',
+            key: 'age'
+        },
+        {
+            title: 'Address',
+            dataIndex: 'address',
+            key: 'address'
+        },
+        {
+            title: 'Name',
+            dataIndex: 'name',
             key: 'name',
             render: (value: any, record: any) => {
                 return <Avatar src={value} />

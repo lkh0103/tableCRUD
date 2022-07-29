@@ -2,11 +2,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useCRUD } from '../hooks/CRUDProvider'
 import CURDPagiantion from '../partials/Pagination'
-import Search from '../partials/Search'
 import { CRUDTable } from '../partials/Table'
 
 export default function ListPage() {
-  const [inputSearch, setInputSearch] = useState<any>('');
   const [data, setData] = useState<any[]>()
   const [params, setParams] = useState<any>({
     page: 1,
