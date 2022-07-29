@@ -6,6 +6,7 @@ import Search from '../partials/Search'
 import { CRUDTable } from '../partials/Table'
 
 export default function ListPage() {
+  const [inputSearch, setInputSearch] = useState<any>('');
   const [data, setData] = useState<any[]>()
   const [params, setParams] = useState<any>({
     page: 1,
@@ -47,7 +48,7 @@ export default function ListPage() {
   }, [])
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const user = searchParams.get("user");
+  const user = searchParams.get("search");
   const [userData, setUserData] = useState<any>(null);
 
   useEffect(() => {
@@ -90,7 +91,6 @@ export default function ListPage() {
           <button type="submit">Search</button>
         </form>
       </div>
-
       {userData && (
         <div
           style={{
@@ -118,11 +118,6 @@ export default function ListPage() {
       <CRUDTable columns={columns} dataSource={data} />
       <CURDPagiantion />
       <br /><br />
-      {/* <Title />
-        <Search />
-        <Table />
-        <Pagination />
-        <SelectSizeTable /> */}
     </div>
   )
 } 
