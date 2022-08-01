@@ -3,8 +3,8 @@ import { useCRUD } from "../hooks/CRUDProvider";
 
 export default function FormCRUD(props: any) {
   const [form, setForm] = useState<any>([]);
-  const [dataTest, setDataTest] = useState<any>(props.data[3]);
   const { title } = useCRUD();
+  const [dataTest, setDataTest] = useState<any>(props.data[3]);
   const keyDataTest: any = Object.keys(dataTest);
   const valueDataTest: any = Object.values(dataTest);
   const inputForm: any = [];

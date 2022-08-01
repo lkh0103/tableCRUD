@@ -9,11 +9,9 @@ export default function FormSchema(props:any) {
       
   return (
     <div>
-        <Form   schema={schema as JSONSchema7}
+        <Form schema={schema as JSONSchema7}
          formData={formInput}
-        //  onChange={e=>setFormInput(e.formData)}
-         onSubmit={(e: any)=>setFormInput(e.formData)
-         }
+         onSubmit={(e: any)=>setFormInput(e.formData)}
         />
     </div>  
   )

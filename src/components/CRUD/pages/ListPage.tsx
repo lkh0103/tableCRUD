@@ -84,28 +84,30 @@ export default function ListPage() {
         </form>
       </div>
       {userData && (
-        <div
-          style={{
-            padding: "24px",
-            margin: "24px 0",
-            borderTop: "1px solid #eaeaea",
-            display: "flex",
-            alignItems: "center",
-            gap: "16px",
-          }}
-        >
-          <img
-            style={{ borderRadius: "50%" }}
-            width={200}
-            height={200}
-            src={userData.avatar_url}
-            alt={userData.login}
-          />
-          <div>
-            <h2>{userData.name}</h2>
-            <p>{userData.bio}</p>
-          </div>
-        </div>
+        <table className='container'>
+          <thead>
+            <tr>
+              <th>Name Search</th>
+              <th>Picture</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>
+                <h2>{userData.name}</h2>
+              </td>
+              <td>
+                <img
+                  style={{ borderRadius: "50%" }}
+                  width={50}
+                  height={50}
+                  src={userData.avatar_url}
+                  alt={userData.login} />
+              </td>
+            </tr>
+          </tbody>
+        </table>
       )}
       <CRUDTable columns={columns} dataSource={dataTable} />
       {pagination.total > 0 && (
@@ -115,7 +117,7 @@ export default function ListPage() {
           pageSize={pagination.total / pagination.totalPages}
           handlePage={handlePage}
         />
-      )} <br/><br/>
+      )} <br /><br />
       <div><Link to="/demo/create">Create</Link></div>
     </div>
   )
