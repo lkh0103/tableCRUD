@@ -2,6 +2,7 @@ import React from "react"
 import CRUD from "../components/CRUD"
 import { listData } from "../components/CRUD/mock-data"
 import { Avatar, Image } from "antd"
+import { Link } from "react-router-dom"
 
 export function DemoCRUDPage() {
     // demo
@@ -18,7 +19,7 @@ export function DemoCRUDPage() {
         {
             title: 'Name',
             dataIndex: 'name',
-            key: 'name'
+            key: 'id'
         },
         {
             title: 'Age',
@@ -26,17 +27,23 @@ export function DemoCRUDPage() {
             key: 'age'
         },
         {
-            title: 'Address',
-            dataIndex: 'address',
-            key: 'address'
+            title: 'Telephone',
+            dataIndex: 'telephone',
+            key: 'telephone'
         },
         {
-            title: 'Name',
+            title: 'Location',
+            dataIndex: 'location',
+            key: 'location'
+        },
+        {
+            title: 'Action',
             dataIndex: 'name',
             key: 'name',
-            render: (value: any, record: any) => {
-                return <Avatar src={value} />
-            }
+            // render: (value: any, record: any) => {
+            //     return <Avatar src={value} />
+            // }
+            render: ()=><Link to='/demo/update'>Edit</Link>
         }
     ]
 

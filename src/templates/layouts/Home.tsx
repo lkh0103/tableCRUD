@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { api, EMethod } from '../../hooks/useRequest'
 import useTitle from '../../hooks/useTitle'
 
@@ -30,7 +30,7 @@ export default function Home() {
             <input value={search} onChange={(e) => {
                 setSearch(e.target.value)
             }} />
-            <button onClick={(e) => {
+            <button onClick={() => {
                 setParam(search)
             }}>Search</button>
         </div>

@@ -1,13 +1,17 @@
-import React from 'react'
-import { Pagination } from 'antd'
+import React, { useState } from "react";
+import { Pagination } from "antd";
 
-export default function CURDPagiantion() {
+export default function CURDPagiantion(props: any) {
+  const [onPage, setOnPage] = useState<any>(props.defaultCurrent);
 
-  const onPageChange = (page: number) => {
-    console.log(page)
-  }
-  
+  props.handlePage(onPage);
+
   return (
-    <Pagination onChange={onPageChange}/>
-  )
+    <Pagination
+      defaultCurrent={props.defaultCurrent}
+      total={props.total}
+      pageSize={props.pageSize}
+      onChange={(e) => setOnPage(e)}
+    />
+  );
 }
