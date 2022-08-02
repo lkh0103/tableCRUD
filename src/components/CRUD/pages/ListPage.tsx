@@ -45,7 +45,6 @@ export default function ListPage() {
 
   useEffect(() => {
     const abortController = new AbortController();
-
     async function getGitHubUser() {
       const response = await fetch(`https://api.github.com/users/${searchData}`, {
         signal: abortController.signal,
@@ -118,7 +117,8 @@ export default function ListPage() {
           handlePage={handlePage}
         />
       )} <br /><br />
-      <div><Link to="/demo/create">Create</Link></div>
+      <div><Link to="/demo/create">Create</Link></div><br />
+      <div><Link to="/demo/id">Update</Link></div>
     </div>
   )
 }

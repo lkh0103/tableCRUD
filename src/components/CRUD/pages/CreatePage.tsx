@@ -1,26 +1,27 @@
 import React, { useEffect } from "react";
 import { useCRUD } from "../hooks/CRUDProvider";
-import Form from "../partials/Form";
+import FormCRUD from "../partials/Form";
 import FormShema from "../partials/FormSchema";
 import ModalList from "../partials/Modal";
 import Title from "../partials/Title";
+import Toast from "../partials/Toast";
 
-export default function CreatePage(loadingForm: any) {
-  const { data, title, showList } = useCRUD();
-
-  useEffect(showList, []);
+export default function CreatePage(schemaForm: any) {
+  const { data } = useCRUD()
+  
 
   return (
     <div>
-      {/* <Title /> */}
-      {/* <ModalList /> */}
-      {loadingForm.loadingForm ? (
-        <FormShema props={loadingForm.loadingForm} />
+      {/* <Title />
+      <ModalList /> */}
+      {schemaForm.schemaForm ? (
+        <FormShema props={schemaForm.schemaForm} />
       ) : (
-        <Form 
-        data={data} 
-        title={title} />
+        <FormCRUD
+          title={Object.keys(data[0])}
+        />
       )}
+      <Toast />
     </div>
   );
 }

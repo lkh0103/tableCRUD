@@ -2,16 +2,19 @@ import React, { useState } from 'react'
 import { JSONSchema7 } from "json-schema";
 import Form from "@rjsf/core";
 
-export default function FormSchema(props:any) {
+export default function FormShema(props:any) {
+
     const [formInput,setFormInput]=useState<any>()
     const schema = props.props ;
       console.log(formInput);
       
   return (
     <div>
-        <Form schema={schema as JSONSchema7}
+        <Form   schema={schema as JSONSchema7}
          formData={formInput}
-         onSubmit={(e: any)=>setFormInput(e.formData)}
+        //  onChange={e=>setFormInput(e.formData)}
+         onSubmit={(e)=>setFormInput(e.formData)
+         }
         />
     </div>  
   )
@@ -76,4 +79,3 @@ export default function FormSchema(props:any) {
 //     </div>
 //   )
 // }
-

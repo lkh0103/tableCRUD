@@ -28,7 +28,9 @@ export type FetchList = (params: Partial<FetchListParams>) => Promise<ListResult
 export interface CRUDProps {
     name: string
     fetchList?: FetchList
+    createAPI: (params: any) => any
     columns: any[]
+    formSchema: any
 }
 
 export default function CRUD(props: CRUDProps) {
