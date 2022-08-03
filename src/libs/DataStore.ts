@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker' 
+import { faker } from '@faker-js/faker'
 
 interface User {
     id: string
@@ -10,12 +10,12 @@ interface User {
 }
 function createRandomUser(): User {
     return {
-      id: faker.datatype.uuid(),
-      username: faker.internet.userName(),
-      email: faker.internet.email(),
-      avatar: faker.image.avatar(),
-      password: faker.internet.password(),
-      registeredAt: faker.date.past().toString(),
+        id: faker.datatype.uuid(),
+        username: faker.internet.userName(),
+        email: faker.internet.email(),
+        avatar: faker.image.avatar(),
+        password: faker.internet.password(),
+        registeredAt: faker.date.past().toString(),
     }
 }
 
@@ -34,10 +34,9 @@ export const list = (params: any) => {
         repo = repo.filter(item => item.username === search)
     }
 
-    const skip = (page - 1) * limit
-    const totalPages = Math.ceil(repo.length / limit)
-
-    const result: any[] = repo.slice(skip, skip + limit - 1)
+    const skip = (page - 1) * limit // = 0 
+    const totalPages = Math.ceil(repo.length / limit) // = 10
+    const result: any[] = repo.slice(skip, skip + limit - 1) // = (0, 0 + 10 -1)
 
     return {
         rows: result,

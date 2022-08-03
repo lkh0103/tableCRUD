@@ -13,6 +13,8 @@ interface CRUDContext {
     loadData: any;
     params: any;
     data: any;
+    create: any;
+    setParams: any;
 }
 
 export const CRUDContext = createContext<CRUDContext>({} as any);
@@ -44,8 +46,6 @@ export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
             body: JSON.stringify(params)
         }).then((result) => result.json())
     }
-
-
 
     const loadData = () => {
         fetchList(params)
@@ -100,6 +100,8 @@ export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
         createList,
         fetchList,
         loadData,
+        create,
+        setParams,
         pagination,
         data,
         params,
