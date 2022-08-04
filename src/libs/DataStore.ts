@@ -56,6 +56,7 @@ export const create = (params: User) => {
 
     return {
         id: user.id,
+        username: user.username,
         message: 'A new user has been created!'
     }
 }

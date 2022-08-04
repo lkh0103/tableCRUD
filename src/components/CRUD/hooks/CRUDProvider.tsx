@@ -15,6 +15,7 @@ interface CRUDContext {
     data: any;
     create: any;
     setParams: any;
+    update: any;
 }
 
 export const CRUDContext = createContext<CRUDContext>({} as any);
@@ -36,9 +37,20 @@ export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
         return fetch(`/api/${props.name}`).then((result) => result.json())
     };
 
-    const create = () => {
+    const create = (params: any) => {
         if (typeof props.createAPI === "function") {
             return props.createAPI(params);
+        }
+        // TODO self handler
+        return fetch(`/api/${props.name}`, {
+            method: 'POST',
+            body: JSON.stringify(params)
+        }).then((result) => result.json())
+    }
+
+    const update = (params: any) => {
+        if (typeof props.updateUser === "function") {
+            return props.updateUser(params);
         }
         // TODO self handler
         return fetch(`/api/${props.name}`, {
@@ -102,6 +114,7 @@ export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
         loadData,
         create,
         setParams,
+        update,
         pagination,
         data,
         params,

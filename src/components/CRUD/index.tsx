@@ -29,6 +29,7 @@ export interface CRUDProps {
     name: string
     fetchList?: FetchList
     createAPI: (params: any) => any
+    updateUser: (params: any) => any
     columns: any[]
     formSchema: any
 }
