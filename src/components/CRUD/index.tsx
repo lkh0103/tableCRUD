@@ -30,10 +30,10 @@ export interface CRUDProps {
     fetchList?: FetchList
     createUser: (params: any) => any
     updateUser: (params: any) => any
+    removeUser: (id: string) => any
     columns: any[]
     formSchema: any
     dataEdit: any
-    removeUser: any
 }
 
 export default function CRUD(props: CRUDProps) {

@@ -7,13 +7,15 @@ import Toast from '../partials/Toast'
 
 export default function UpdatePage(props: any) {
 
-  const { data, updateData } = useCRUD();
+  const { data, updateData, deleteData } = useCRUD();
   const getReturnUpdateAPI = (value: any) => {
-    if (value) {
-      updateData(value)
-    }
+    updateData(value)
   }
   // console.log(props.dataEdit.rows);
+
+  const getReturnDeleteAPI = (id: string) => {
+    deleteData(id)
+  }
 
   return (
     <div>
@@ -24,6 +26,7 @@ export default function UpdatePage(props: any) {
           data={props.dataEdit.rows}
           title={Object.keys(data[0])}
           getReturnUpdateAPI={getReturnUpdateAPI}
+          delData={getReturnDeleteAPI}
         />
       )}
       <Toast />
