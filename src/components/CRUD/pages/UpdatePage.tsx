@@ -7,13 +7,13 @@ import Toast from '../partials/Toast'
 
 export default function UpdatePage(props: any) {
 
-  const { data, update } = useCRUD();
-
+  const { data, updateData } = useCRUD();
   const getReturnUpdateAPI = (value: any) => {
     if (value) {
-      update(value)
+      updateData(value)
     }
   }
+  // console.log(props.dataEdit.rows);
 
   return (
     <div>
@@ -21,9 +21,9 @@ export default function UpdatePage(props: any) {
         <FormShema propsFormSchema={props.schemaForm} />
       ) : (
         <FormCRUD
-          data={data}
+          data={props.dataEdit.rows}
           title={Object.keys(data[0])}
-          updateUserData={getReturnUpdateAPI}
+          getReturnUpdateAPI={getReturnUpdateAPI}
         />
       )}
       <Toast />

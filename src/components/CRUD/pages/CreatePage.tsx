@@ -6,11 +6,10 @@ import Toast from "../partials/Toast";
 
 export default function CreatePage(props: any) {
 
-  const { data, create } = useCRUD()
-
+  const { data, createUser } = useCRUD()
   const getReturnCreatAPI = (value: any) => {
     if (value) {
-      create(value)
+      createUser(value)
     }
   }
 
@@ -21,7 +20,7 @@ export default function CreatePage(props: any) {
       ) : (
         <FormCRUD
           title={Object.keys(data[0])}
-          createUser={getReturnCreatAPI}
+          getReturnCreatAPI={getReturnCreatAPI}
         />
       )}
       <Toast />

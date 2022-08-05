@@ -28,10 +28,12 @@ export type FetchList = (params: Partial<FetchListParams>) => Promise<ListResult
 export interface CRUDProps {
     name: string
     fetchList?: FetchList
-    createAPI: (params: any) => any
+    createUser: (params: any) => any
     updateUser: (params: any) => any
     columns: any[]
     formSchema: any
+    dataEdit: any
+    removeUser: any
 }
 
 export default function CRUD(props: CRUDProps) {
@@ -44,7 +46,7 @@ export default function CRUD(props: CRUDProps) {
             case undefined:
                 return <ListPage />
             default:
-                return <UpdatePage />
+                return <UpdatePage dataEdit={props.dataEdit} />
         }
     }, [params.id])
 

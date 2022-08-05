@@ -8,14 +8,13 @@ interface CRUDContext {
     list: any;
     getData: any;
     title: any;
-    showList: any;
     pagination: any;
     loadData: any;
     params: any;
     data: any;
-    create: any;
+    createUser: any;
     setParams: any;
-    update: any;
+    updateData: any;
 }
 
 export const CRUDContext = createContext<CRUDContext>({} as any);
@@ -25,7 +24,7 @@ export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
     const [data, setData] = useState<any>();
     const [params, setParams] = useState<any>({
         page: 1,
-        limit: 10,
+        limit: 4,
     });
     const [pagination, setPagination] = useState<any>({});
 
@@ -37,9 +36,9 @@ export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
         return fetch(`/api/${props.name}`).then((result) => result.json())
     };
 
-    const create = (params: any) => {
-        if (typeof props.createAPI === "function") {
-            return props.createAPI(params);
+    const createUser = (params: any) => {
+        if (typeof props.createUser === "function") {
+            return props.createUser(params);
         }
         // TODO self handler
         return fetch(`/api/${props.name}`, {
@@ -48,7 +47,7 @@ export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
         }).then((result) => result.json())
     }
 
-    const update = (params: any) => {
+    const updateData = (params: any) => {
         if (typeof props.updateUser === "function") {
             return props.updateUser(params);
         }
@@ -80,41 +79,15 @@ export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
         );
     };
 
-    const getTitle = () => {
-        {
-            data && setTitle(Object.keys(data[0]));
-        }
-    };
-
-    const showList = () => {
-        getTitle();
-    };
-
-    const createList = () => {
-        getData();
-    };
-
-    const updateList = () => {
-        getData();
-    };
-
-    const DeleteList = () => {
-        getData();
-    };
-
     const contextvalueCRUD = {
         list,
         title,
-        showList,
-        updateList,
-        DeleteList,
         getData,
-        createList,
         fetchList,
         loadData,
-        create,
+        createUser,
         setParams,
-        update,
+        updateData,
         pagination,
         data,
         params,

@@ -5,19 +5,22 @@ import { toast } from "react-toastify";
 export default function FormCRUD(props: any) {
 
   const [form] = Form.useForm();
-  const onFinish = (value: any) => {
-    form.resetFields();
-    props.createUser(value)
-    props.updateUserData(value)
-    toast('success')
-    console.log(value)
-  };
 
   if (props.data) {
     useEffect(() => {
-      form.getFieldValue(props.data);
-    }, []);
+      form.setFieldsValue(props.data);
+    }, [props.data]);
   }
+  const onFinish = (value: any) => {
+    form.resetFields();
+    if (!props.data) {
+      props.getReturnCreatAPI(value)
+      toast('success')
+    }
+    else {
+      props.getReturnUpdateAPI(value)
+    }
+  };
 
   return (
     <div>

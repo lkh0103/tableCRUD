@@ -72,6 +72,13 @@ export const update = (params: User) => {
     }
 }
 
+export const findId = (params: any) => {
+    const user = ALL_USERS.find((u) => u.id === params)
+    return {
+        rows: user
+    }
+} 
+
 export const remove = (id: string) => {
     const index = ALL_USERS.findIndex(u => u.id === id)
     // if (index === -1) {}
