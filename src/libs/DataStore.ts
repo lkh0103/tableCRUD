@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker'
+import { toast } from 'react-toastify'
 
 interface User {
     id: string
@@ -53,7 +54,7 @@ export const create = (params: User) => {
         id: faker.datatype.uuid()
     }
     ALL_USERS.push(user)
-
+    
     return {
         id: user.id,
         username: user.username,
@@ -86,6 +87,11 @@ export const findId = (params: any) => {
 
 export const remove = (id: string) => {
     const index = ALL_USERS.findIndex(u => u.id === id)
+    if (index === -1) {
+        return {
+            message: " ID not found"
+        }
+    }
     // if (index === -1) {}
     // TODO handle user not found
     const removedItems = ALL_USERS.splice(index, 1)

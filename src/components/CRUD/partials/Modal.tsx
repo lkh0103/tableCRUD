@@ -1,7 +1,7 @@
 import { Button, Modal } from 'antd';
 import React, { useState } from 'react'
 
-export default function ModalCRUD() {
+export default function ModalCRUD(props: any) {
 
   const [visible, setVisible] = useState(false);
   const [modalText, setModalText] = useState('Are you sure?');
@@ -11,8 +11,9 @@ export default function ModalCRUD() {
   };
 
   const handleOk = () => {
+    props.delData(props.data.id)
     setModalText('Accept Delete');
-
+    setVisible(false);
   };
 
   const handleCancel = () => {

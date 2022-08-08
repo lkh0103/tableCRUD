@@ -3,6 +3,7 @@ import CRUD from "../components/CRUD"
 import { Avatar, Image } from "antd"
 import { Link } from "react-router-dom"
 import { create, findId, list, remove, update } from "../libs/DataStore"
+import { toast } from "react-toastify"
 
 export function DemoCRUDPage() {
     const [dataEdit, setDataEdit] = useState<any>();
@@ -15,7 +16,7 @@ export function DemoCRUDPage() {
 
     const createApi = (params: any) => {
         const response = create(params)
-        console.log(response);
+        console.log('success',response)
         return Promise.resolve(response)
     }
 

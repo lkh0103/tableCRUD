@@ -12,7 +12,7 @@ interface CRUDContext {
     loadData: any;
     params: any;
     data: any;
-    createUser: any;
+    createData: any;
     setParams: any;
     updateData: any;
     deleteData: any;
@@ -37,7 +37,7 @@ export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
         return fetch(`/api/${props.name}`).then((result) => result.json())
     };
 
-    const createUser = (params: any) => {
+    const createData = (params: any) => {
         if (typeof props.createUser === "function") {
             return props.createUser(params);
         }
@@ -97,7 +97,7 @@ export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
         getData,
         fetchList,
         loadData,
-        createUser,
+        createData,
         setParams,
         updateData,
         deleteData,

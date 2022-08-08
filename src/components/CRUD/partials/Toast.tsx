@@ -2,7 +2,7 @@ import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function Toast() {
+export default function Toast(props: any) {
   const createNotification = (type: string) => {
     return () => {
       switch (type) {
@@ -26,8 +26,11 @@ export default function Toast() {
     <div>
       {/* <button className='btn btn-success'
         onClick={createNotification('success')}>Success
-      </button> */}
-      {/* <hr />
+      </button>
+      <button className='btn btn-danger'
+        onClick={createNotification('error')}>Error
+      </button>
+      <hr />
       <button className='btn btn-info'
         onClick={createNotification('info')}>Info
       </button>
@@ -35,10 +38,7 @@ export default function Toast() {
       <button className='btn btn-warning'
         onClick={createNotification('warning')}>Warning
       </button>
-      <hr />
-      <button className='btn btn-danger'
-        onClick={createNotification('error')}>Error
-      </button> */}
+      <hr /> */}
       <ToastContainer />
     </div>
   )

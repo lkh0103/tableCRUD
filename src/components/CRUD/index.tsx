@@ -52,7 +52,7 @@ export default function CRUD(props: CRUDProps) {
 
     return (
         <CRUDProvider {...props}>
-            <h1>{props.name}</h1>
+            {/* <h1>{props.name}</h1> */}
             {renderContent()}
         </CRUDProvider>
     )
