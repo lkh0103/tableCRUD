@@ -1,3 +1,14 @@
+// import React from 'react'
+
+// export default function Title(props: any) {
+//   return (
+//     <div>
+//       {props.titlePage}
+//     </div>
+//   )
+// }
+
+
 import React from 'react'
 import { useParams } from 'react-router'
 
@@ -12,3 +23,4 @@ export default function Title() {
       return <h2>Update</h2>
   }
 }
+

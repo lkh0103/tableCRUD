@@ -19,11 +19,14 @@ export default function CreatePage(props: any) {
     }
   }
 
+  console.log(props.formSchema);
+  
+  
   return (
     <div>
-      <Title /><br />
-      {props.schemaForm ? (
-        <FormShema propsFormSchema={props.schemaForm} />
+      <Title />
+      {props.formSchema ? (
+        <FormShema propsFormSchema={props.formSchema} />
       ) : (
         <FormCRUD
           title={Object.keys(data[0])}

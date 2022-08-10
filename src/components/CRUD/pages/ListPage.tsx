@@ -8,7 +8,7 @@ import { CRUDTable } from '../partials/Table'
 import Title from '../partials/Title'
 
 export default function ListPage(props: any) {
-  const { columns, loadData, pagination, params, setParams, data, titlePage } = useCRUD();
+  const { columns, loadData, pagination, params, setParams, data } = useCRUD();
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(loadData, [params]);
@@ -34,7 +34,7 @@ export default function ListPage(props: any) {
 
   return (
     <div>
-      {props.titlePage}
+      <Title />
       <Button style={{ float: 'right' }}>
         <Link to="/demo/create">Create User</Link>
       </Button><br /><br /><br />

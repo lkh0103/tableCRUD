@@ -21,7 +21,7 @@ export default function UpdatePage(props: any) {
 
   return (
     <div>
-      <Title /><br />
+      <Title />
       {props.schemaForm ? (
         <FormShema propsFormSchema={props.schemaForm} />
       ) : (

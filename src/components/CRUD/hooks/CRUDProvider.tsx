@@ -1,6 +1,7 @@
 import React, { createContext, PropsWithChildren, useContext, useState, } from "react";
 import { api, EMethod } from "../../../hooks/useRequest";
 import { CRUDProps, FetchList } from "..";
+import { text } from "node:stream/consumers";
 
 interface CRUDContext {
     fetchList: FetchList;
@@ -16,7 +17,6 @@ interface CRUDContext {
     setParams: any;
     updateData: any;
     deleteData: any;
-    titlePage: any;
 }
 
 export const CRUDContext = createContext<CRUDContext>({} as any);
@@ -92,13 +92,6 @@ export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
         );
     };
 
-    const titlePage = () => {
-        if (typeof props.titleCRUD === "function") {
-            return props.titleCRUD(params.id);
-        }
-        // TODO self handler
-        return fetch(`/api/${props.name}`).then((result) => result.json())
-    }
 
     const contextvalueCRUD = {
         list,
@@ -110,7 +103,6 @@ export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
         setParams,
         updateData,
         deleteData,
-        titlePage,
         pagination,
         data,
         params,

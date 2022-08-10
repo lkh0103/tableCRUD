@@ -1,8 +1,9 @@
-import React, { useCallback, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import CRUD from "../components/CRUD"
 import { Avatar, Image } from "antd"
 import { Link, useParams } from "react-router-dom"
 import { create, findId, list, remove, update } from "../libs/DataStore"
+import ListPage from "../components/CRUD/pages/ListPage"
 
 export function DemoCRUDPage() {
     const [dataEdit, setDataEdit] = useState<any>();
@@ -36,19 +37,19 @@ export function DemoCRUDPage() {
             title: 'id',
             dataIndex: 'id',
             key: 'id',
-            width: "15%",
+            width: "8%",
         },
         {
             title: 'username',
             dataIndex: 'username',
             key: 'id',
-            width: "15%",
+            width: "10%",
         },
         {
             title: 'email',
             dataIndex: 'email',
             key: 'id',
-            width: "18%",
+            width: "15%",
             render: (value: any) => {
                 return <p>{'@' + value}</p>
             }
@@ -56,7 +57,8 @@ export function DemoCRUDPage() {
         {
             title: 'registeredAt',
             dataIndex: 'registeredAt',
-            key: 'age'
+            key: 'age',
+            width: "18%",
         },
         {
             title: 'avatar',
@@ -84,19 +86,17 @@ export function DemoCRUDPage() {
         return Promise.resolve(response);
     };
 
-    const params = useParams()
-    const titleCRUD = useCallback(() => {
-        switch (params.id) {
-            case 'create':
-                return <h1>Create</h1>
-            case undefined:
-                return <h1>Home</h1>
-            default:
-                return <h1>Update</h1>
+    const schema = {
+        title: "Todo",
+        type: "object",
+        required: ["title"],
+        properties: {
+          title: {type: "string", title: "Title", default: "A new task"},
+          done: {type: "boolean", title: "Done?", default: false}
         }
-    }, [params.id])
+      };
 
-    const schema = null
+    //   const schema = null
 
     return (
         <CRUD
@@ -108,7 +108,6 @@ export function DemoCRUDPage() {
             columns={columns}
             formSchema={schema}
             dataEdit={dataEdit}
-            titleCRUD={titleCRUD}
         />
     )
 }

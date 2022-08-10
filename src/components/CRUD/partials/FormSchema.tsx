@@ -5,7 +5,7 @@ import Form from "@rjsf/core";
 export default function FormShema(props:any) {
 
     const [formInput,setFormInput]=useState<any>()
-    const schema = props.props ;
+    const schema = props.propsFormSchema ;
       console.log(formInput);
       
   return (

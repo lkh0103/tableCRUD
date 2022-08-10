@@ -33,16 +33,16 @@ export interface CRUDProps {
     columns: any[]
     formSchema: any
     dataEdit: any
-    titleCRUD: (params: string) => any
 }
 
 export default function CRUD(props: CRUDProps) {
     const params = useParams()
+    
 
     const renderContent = useCallback(() => {
         switch (params.id) {
             case 'create':
-                return <CreatePage />
+                return <CreatePage formSchema={props.formSchema} />
             case undefined:
                 return <ListPage />
             default:
@@ -52,7 +52,7 @@ export default function CRUD(props: CRUDProps) {
 
     return (
         <CRUDProvider {...props}>
-            <h1>{props.name}</h1>
+            {/* <h1>{props.name}</h1> */}
             {renderContent()}
         </CRUDProvider>
     )
