@@ -6,7 +6,6 @@ import FormShema from "../partials/FormSchema";
 import Title from "../partials/Title";
 import Toast from "../partials/Toast";
 
-
 export default function CreatePage(props: any) {
 
   const { data, createData } = useCRUD()

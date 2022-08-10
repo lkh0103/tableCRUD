@@ -1,7 +1,7 @@
-import React, { useState } from "react"
+import React, { useCallback, useState } from "react"
 import CRUD from "../components/CRUD"
 import { Avatar, Image } from "antd"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { create, findId, list, remove, update } from "../libs/DataStore"
 
 export function DemoCRUDPage() {
@@ -35,12 +35,14 @@ export function DemoCRUDPage() {
         {
             title: 'id',
             dataIndex: 'id',
-            key: 'id'
+            key: 'id',
+            width: "15%",
         },
         {
             title: 'username',
             dataIndex: 'username',
-            key: 'id'
+            key: 'id',
+            width: "15%",
         },
         {
             title: 'email',
@@ -60,13 +62,14 @@ export function DemoCRUDPage() {
             title: 'avatar',
             dataIndex: 'avatar',
             key: 'avatar',
+            width: "10%",
             render: (value: any, record: any) => {
                 return <Image src={value} />
             }
         },
         {
             title: 'Edit',
-            width: "8%",
+            width: "5%",
             render: (value: any, index: number) => (
                 <Link to={`/demo/edit`} onClick={() => handleEdit(value)}>
                     Edit
@@ -81,7 +84,17 @@ export function DemoCRUDPage() {
         return Promise.resolve(response);
     };
 
-    
+    const params = useParams()
+    const titleCRUD = useCallback(() => {
+        switch (params.id) {
+            case 'create':
+                return <h1>Create</h1>
+            case undefined:
+                return <h1>Home</h1>
+            default:
+                return <h1>Update</h1>
+        }
+    }, [params.id])
 
     const schema = null
 
@@ -95,6 +108,7 @@ export function DemoCRUDPage() {
             columns={columns}
             formSchema={schema}
             dataEdit={dataEdit}
+            titleCRUD={titleCRUD}
         />
     )
 }

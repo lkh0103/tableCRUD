@@ -8,7 +8,7 @@ import Title from '../partials/Title'
 import Toast from '../partials/Toast'
 
 export default function UpdatePage(props: any) {
-  const [form] = Form.useForm();
+  
   const { data, updateData, deleteData } = useCRUD();
   const updateUser = (value: any) => {
     updateData(value)
@@ -31,11 +31,6 @@ export default function UpdatePage(props: any) {
           updateUser={updateUser}
         />
       )}
-      <Toast
-        data={props.dataEdit.rows}
-        updateUser={updateUser}
-      />
-      <Button onClick={form.submit}>Submit</Button>
       <ModalCRUD
         data={props.dataEdit.rows}
         delData={deleteUser}

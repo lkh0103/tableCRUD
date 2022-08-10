@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 import Toast from "../partials/Toast";
 
 export default function FormCRUD(props: any) {
@@ -14,10 +14,10 @@ export default function FormCRUD(props: any) {
   const onFinish = (value: any) => {
     form.resetFields();
     if (!props.data) {
-      props.getReturnCreatAPI(value)
+      props.createUser(value)
     }
     else {
-      props.getReturnUpdateAPI(value)
+      props.updateUser(value)
     }
   };
 
@@ -31,6 +31,7 @@ export default function FormCRUD(props: any) {
             </Form.Item>
           ))}
         </Form>
+        <Button onClick={form.submit}>Submit</Button>
         <Toast />
       </div>
     </div>
