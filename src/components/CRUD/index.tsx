@@ -24,7 +24,6 @@ interface ListResult {
 }
 
 export type FetchList = (params: Partial<FetchListParams>) => Promise<ListResult>
-
 export interface CRUDProps {
     name: string
     fetchList?: FetchList

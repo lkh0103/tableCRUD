@@ -3,24 +3,29 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Toast(props: any) {
-  const createNotification = (type: string) => {
-    return () => {
-      switch (type) {
-        case 'info':
-          toast.info('Info message');
-          break;
-        case 'success':
-          toast.success('Success');
-          break;
-        case 'warning':
-          toast.warning('Warning message');
-          break;
-        case 'error':
-          toast.error('Error message');
-          break;
-      }
-    };
-  };
+  // const createNotification = (type: string) => {
+  //   return () => {
+  //     switch (type) {
+  //       case 'info':
+  //         toast.info('Info message');
+  //         break;
+  //       case 'success':
+  //         toast.success('Success');
+  //         break;
+  //       case 'warning':
+  //         toast.warning('Warning message');
+  //         break;
+  //       case 'error':
+  //         toast.error('Error message');
+  //         break;
+  //     }
+  //   };
+  // };
+
+  const renderNoti = () => {
+    console.log();
+    
+  }
 
   return (
     <div>

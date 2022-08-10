@@ -13,16 +13,17 @@ export default function ListPage() {
 
   useEffect(loadData, [params]);
 
-  const onPageChange = (page: any) => {
+  const onPageChange = (page: any, pageSize: any) => {
     setSearchParams({ searchPage: page })
     setParams({
       ...params,
       page,
+      limit: pageSize
     });
   };
 
   const onSearch = (search: string, page: number) => {
-    setSearchParams({ searchUser: search })
+    setSearchParams({ search: search })
     setParams({
       ...params,
       searchParams,
@@ -41,10 +42,10 @@ export default function ListPage() {
       <CRUDTable columns={columns} dataSource={data} />
       {pagination.total > 0 && (
         <CURDPagiantion
-          defaultCurrent={pagination.page}
-          total={pagination.total}
-          pageSize={pagination.total / pagination.totalPages}
-          onPageChange={onPageChange}
+          defaultCurrent={pagination.page} // Trang mặc định
+          total={pagination.total * pagination.totalPages} // tổng all phần tử
+          pageSize={pagination.total} // bao nhiêu phần tử trên 1 trang sau khi ng dùng chỉnh sửa
+          onPageChange={onPageChange} // chuyển phân trang
         />
       )} <br /><br />
     </div>

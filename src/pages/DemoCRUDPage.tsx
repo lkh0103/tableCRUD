@@ -3,7 +3,6 @@ import CRUD from "../components/CRUD"
 import { Avatar, Image } from "antd"
 import { Link } from "react-router-dom"
 import { create, findId, list, remove, update } from "../libs/DataStore"
-import { toast } from "react-toastify"
 
 export function DemoCRUDPage() {
     const [dataEdit, setDataEdit] = useState<any>();
@@ -16,7 +15,7 @@ export function DemoCRUDPage() {
 
     const createApi = (params: any) => {
         const response = create(params)
-        console.log('success',response)
+        console.log('success', response)
         return Promise.resolve(response)
     }
 
@@ -46,7 +45,11 @@ export function DemoCRUDPage() {
         {
             title: 'email',
             dataIndex: 'email',
-            key: 'id'
+            key: 'id',
+            width: "18%",
+            render: (value: any) => {
+                return <p>{'@' + value}</p>
+            }
         },
         {
             title: 'registeredAt',
@@ -63,7 +66,7 @@ export function DemoCRUDPage() {
         },
         {
             title: 'Edit',
-            width: "18%",
+            width: "8%",
             render: (value: any, index: number) => (
                 <Link to={`/demo/edit`} onClick={() => handleEdit(value)}>
                     Edit
@@ -77,6 +80,8 @@ export function DemoCRUDPage() {
         setDataEdit(response);
         return Promise.resolve(response);
     };
+
+    
 
     const schema = null
 

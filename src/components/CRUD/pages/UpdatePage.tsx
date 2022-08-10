@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button, Form } from 'antd'
 import { useCRUD } from '../hooks/CRUDProvider'
 import FormCRUD from '../partials/Form'
 import FormShema from '../partials/FormSchema'
@@ -7,14 +8,14 @@ import Title from '../partials/Title'
 import Toast from '../partials/Toast'
 
 export default function UpdatePage(props: any) {
-
+  const [form] = Form.useForm();
   const { data, updateData, deleteData } = useCRUD();
-  const getReturnUpdateAPI = (value: any) => {
+  const updateUser = (value: any) => {
     updateData(value)
   }
   console.log(props.dataEdit.rows);
 
-  const getReturnDeleteAPI = (id: string) => {
+  const deleteUser = (id: string) => {
     deleteData(id)
   }
 
@@ -27,13 +28,17 @@ export default function UpdatePage(props: any) {
         <FormCRUD
           data={props.dataEdit.rows}
           title={Object.keys(data[0])}
-          getReturnUpdateAPI={getReturnUpdateAPI}
+          updateUser={updateUser}
         />
       )}
-      {/* <Toast /> */}
+      <Toast
+        data={props.dataEdit.rows}
+        updateUser={updateUser}
+      />
+      <Button onClick={form.submit}>Submit</Button>
       <ModalCRUD
         data={props.dataEdit.rows}
-        delData={getReturnDeleteAPI}
+        delData={deleteUser}
       />
     </div>
   )

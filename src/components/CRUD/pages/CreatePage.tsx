@@ -1,16 +1,16 @@
-import { Button } from "antd";
 import React from "react";
 import { toast } from "react-toastify";
 import { useCRUD } from "../hooks/CRUDProvider";
 import FormCRUD from "../partials/Form";
 import FormShema from "../partials/FormSchema";
 import Title from "../partials/Title";
+import Toast from "../partials/Toast";
 
 
 export default function CreatePage(props: any) {
 
   const { data, createData } = useCRUD()
-  const getReturnCreatAPI = async (value: string) => {
+  const createUser = async (value: string) => {
     const addUser = await createData(value)
     // console.log(value)
     if (addUser) {
@@ -28,11 +28,13 @@ export default function CreatePage(props: any) {
       ) : (
         <FormCRUD
           title={Object.keys(data[0])}
-          getReturnCreatAPI={getReturnCreatAPI}
+          createUser={createUser}
         />
       )}
-      <button onClick={getReturnCreatAPI}>Click</button>
-      {/* <Toast /> */}
+      <Toast
+        title={Object.keys(data[0])}
+        createUser={createUser}
+      />
     </div>
   )
 }

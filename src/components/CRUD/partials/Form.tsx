@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Button, Form, Input, Modal } from "antd";
-import { toast } from "react-toastify";
+import React, { useEffect } from "react";
+import { Form, Input } from "antd";
 import Toast from "../partials/Toast";
 
 export default function FormCRUD(props: any) {
@@ -32,17 +31,9 @@ export default function FormCRUD(props: any) {
             </Form.Item>
           ))}
         </Form>
-        <Button onClick={form.submit}>Submit</Button>
         <Toast />
       </div>
     </div>
   );
 }
 
-// if (value) {
-//   toast('success')
-// } else {
-//   if (value === '') {
-//     toast('error')
-//   }
-// }
