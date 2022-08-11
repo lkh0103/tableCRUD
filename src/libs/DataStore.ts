@@ -69,7 +69,9 @@ export const create = (params: User) => {
 export const update = (params: User) => {
     const user = ALL_USERS.find(u => u.id === params.id) as User
     if (!user) {
-        message.error('Data has been updated')
+        return {
+            message: 'User not found'
+        }
     }
 
     // if (!user) {}

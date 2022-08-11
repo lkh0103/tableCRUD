@@ -15,6 +15,7 @@ export function DemoCRUDPage() {
 
     const createApi = (params: any) => {
         const response = create(params)
+        console.log('response', response)
         if (response.username && response.avatar && response.email && response.id && response.password && response.registeredAt) {
             message.success('This is a success message');
         } else {
@@ -23,13 +24,21 @@ export function DemoCRUDPage() {
                 message: 'Not Found'
             }
         }
-        console.log('response', response)
         return Promise.resolve(response)
     }
 
     const updateApi = (params: any) => {
         const resUpdateApi = update(params)
         console.log(resUpdateApi)
+        if (resUpdateApi.id) {
+            message.success('This is a success message');
+        } else {
+            message.error('Data has been updated')
+            return {
+                message: 'Not Found'
+            }
+        }
+
         return Promise.resolve(resUpdateApi)
     }
 

@@ -11,10 +11,10 @@ export default function UpdatePage(props: any) {
   // const [error, setError] = useState<string>('')
   const { data, updateData, deleteData } = useCRUD();
   const updateUser = (value: any) => {
-    const updateDT = updateData(value)
-    if (updateDT) {
-      message.success('This is a success message');
-    }
+    updateData(value)
+    // if (updateDT) {
+    //   message.success('This is a success message');
+    // }
   }
 
   const deleteUser = (id: string) => {
