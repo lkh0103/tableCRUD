@@ -1,9 +1,8 @@
-import React, { useCallback, useEffect, useState } from "react"
+import React, { useState } from "react"
 import CRUD from "../components/CRUD"
-import { Avatar, Image } from "antd"
-import { Link, useParams } from "react-router-dom"
+import { Avatar, Image, message } from "antd"
+import { Link } from "react-router-dom"
 import { create, findId, list, remove, update } from "../libs/DataStore"
-import ListPage from "../components/CRUD/pages/ListPage"
 
 export function DemoCRUDPage() {
     const [dataEdit, setDataEdit] = useState<any>();
@@ -16,7 +15,15 @@ export function DemoCRUDPage() {
 
     const createApi = (params: any) => {
         const response = create(params)
-        console.log('success', response)
+        if (response.username && response.avatar && response.email && response.id && response.password && response.registeredAt) {
+            message.success('This is a success message');
+        } else {
+            message.error('Please fill in the blanks')
+            return {
+                message: 'Not Found'
+            }
+        }
+        console.log('response', response)
         return Promise.resolve(response)
     }
 
@@ -81,7 +88,7 @@ export function DemoCRUDPage() {
         const response = findId(data.id);
         setDataEdit(response);
         return Promise.resolve(response);
-    };
+    }
 
     // const schema = {
     //     title: "Todo",

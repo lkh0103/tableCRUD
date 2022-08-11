@@ -22,11 +22,6 @@ export default function Toast(props: any) {
   //   };
   // };
 
-  const renderNoti = () => {
-    console.log();
-    
-  }
-
   return (
     <div>
       {/* <button className='btn btn-success'

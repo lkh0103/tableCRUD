@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker'
+import { message } from 'antd'
 
 interface User {
     id: string
@@ -57,6 +58,10 @@ export const create = (params: User) => {
     return {
         id: user.id,
         username: user.username,
+        email: user.email,
+        avatar: user.avatar,
+        password: user.password,
+        registeredAt: user.registeredAt,
         message: 'A new user has been created!'
     }
 }
@@ -64,10 +69,9 @@ export const create = (params: User) => {
 export const update = (params: User) => {
     const user = ALL_USERS.find(u => u.id === params.id) as User
     if (!user) {
-        return {
-            message: 'User not found'
-        }
+        message.error('Data has been updated')
     }
+
     // if (!user) {}
     // TODO check if not found User
     Object.assign(user, params)
