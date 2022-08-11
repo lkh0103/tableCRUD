@@ -1,7 +1,6 @@
 import React, { createContext, PropsWithChildren, useContext, useState, } from "react";
 import { api, EMethod } from "../../../hooks/useRequest";
 import { CRUDProps, FetchList } from "..";
-import { text } from "node:stream/consumers";
 
 interface CRUDContext {
     fetchList: FetchList;
@@ -91,7 +90,6 @@ export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
             }
         );
     };
-
 
     const contextvalueCRUD = {
         list,

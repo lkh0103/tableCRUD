@@ -1,5 +1,5 @@
 import { Button } from 'antd'
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useCRUD } from '../hooks/CRUDProvider'
 import CURDPagiantion from '../partials/Pagination'
@@ -32,9 +32,16 @@ export default function ListPage(props: any) {
     });
   };
 
+  const renderTitle = useCallback(() => {
+    if (typeof props.renderTitle === 'function') {
+      return props.renderTitle('List Page')
+    }
+    return <Title />
+  }, [props.renderTitle])
+
   return (
     <div>
-      <Title />
+      {renderTitle()}
       <Button style={{ float: 'right' }}>
         <Link to="/demo/create">Create User</Link>
       </Button><br /><br /><br />

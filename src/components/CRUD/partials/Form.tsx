@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Upload } from "antd";
 import Toast from "../partials/Toast";
 
 export default function FormCRUD(props: any) {

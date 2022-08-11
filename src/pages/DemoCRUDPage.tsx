@@ -37,19 +37,17 @@ export function DemoCRUDPage() {
             title: 'id',
             dataIndex: 'id',
             key: 'id',
-            width: "8%",
+
         },
         {
             title: 'username',
             dataIndex: 'username',
             key: 'id',
-            width: "10%",
         },
         {
             title: 'email',
             dataIndex: 'email',
             key: 'id',
-            width: "15%",
             render: (value: any) => {
                 return <p>{'@' + value}</p>
             }
@@ -58,7 +56,6 @@ export function DemoCRUDPage() {
             title: 'registeredAt',
             dataIndex: 'registeredAt',
             key: 'age',
-            width: "18%",
         },
         {
             title: 'avatar',
@@ -86,17 +83,17 @@ export function DemoCRUDPage() {
         return Promise.resolve(response);
     };
 
-    const schema = {
-        title: "Todo",
-        type: "object",
-        required: ["title"],
-        properties: {
-          title: {type: "string", title: "Title", default: "A new task"},
-          done: {type: "boolean", title: "Done?", default: false}
-        }
-      };
+    // const schema = {
+    //     title: "Todo",
+    //     type: "object",
+    //     required: ["title"],
+    //     properties: {
+    //         title: { type: "string", title: "Title", default: "A new task" },
+    //         done: { type: "boolean", title: "Done?", default: false }
+    //     }
+    // };
 
-    //   const schema = null
+    const schema = null
 
     return (
         <CRUD
@@ -108,6 +105,7 @@ export function DemoCRUDPage() {
             columns={columns}
             formSchema={schema}
             dataEdit={dataEdit}
+            renderTitle={(ctx: any) => <h1>{ctx}</h1>}
         />
     )
 }

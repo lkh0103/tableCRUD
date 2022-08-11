@@ -9,7 +9,7 @@ export default function CURDPagiantion(props: any) {
       defaultCurrent={props.defaultCurrent}
       total={props.total}
       pageSize={props.pageSize}
-      onChange={(page,pageSize) => props.onPageChange(page,pageSize)}
+      onChange={(page, pageSize) => props.onPageChange(page, pageSize)}
     />
   );
 }

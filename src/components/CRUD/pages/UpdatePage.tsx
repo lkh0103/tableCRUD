@@ -1,11 +1,9 @@
 import React from 'react'
-import { Button, Form } from 'antd'
 import { useCRUD } from '../hooks/CRUDProvider'
 import FormCRUD from '../partials/Form'
 import FormShema from '../partials/FormSchema'
 import ModalCRUD from '../partials/Modal'
 import Title from '../partials/Title'
-import Toast from '../partials/Toast'
 
 export default function UpdatePage(props: any) {
   
