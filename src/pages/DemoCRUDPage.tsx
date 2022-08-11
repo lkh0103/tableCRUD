@@ -16,13 +16,10 @@ export function DemoCRUDPage() {
     const createApi = (params: any) => {
         const response = create(params)
         console.log('response', response)
-        if (response.username && response.avatar && response.email && response.id && response.password && response.registeredAt) {
-            message.success('This is a success message');
+        if (response.username && response.avatar && response.email && response.password && response.registeredAt) {
+            message.success('Data Create "Success"');
         } else {
             message.error('Please fill in the blanks')
-            return {
-                message: 'Not Found'
-            }
         }
         return Promise.resolve(response)
     }
@@ -31,20 +28,21 @@ export function DemoCRUDPage() {
         const resUpdateApi = update(params)
         console.log(resUpdateApi)
         if (resUpdateApi.id) {
-            message.success('This is a success message');
+            message.success('Data Update "Success"')
         } else {
             message.error('Data has been updated')
-            return {
-                message: 'Not Found'
-            }
         }
-
         return Promise.resolve(resUpdateApi)
     }
 
     const removeApi = (id: string) => {
         const delApi = remove(id)
         console.log(delApi);
+        if (delApi.id) {
+            message.success('Data Delete "Success"')
+        } else {
+            message.error('Not Found User')
+        }
         return Promise.resolve(delApi)
     }
 

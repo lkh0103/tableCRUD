@@ -31,7 +31,7 @@ export default function FormCRUD(props: any) {
       <div>
         <Form {...layout} form={form} onFinish={onFinish}>
           {props.title.map((item: any, index: number) => (
-            <Form.Item key={item} name={item} label={item}>
+            <Form.Item key={item} name={item} label={item} rules={[{ required: true }]}>
               <Input />
             </Form.Item>
           ))}

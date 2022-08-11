@@ -12,9 +12,6 @@ export default function UpdatePage(props: any) {
   const { data, updateData, deleteData } = useCRUD();
   const updateUser = (value: any) => {
     updateData(value)
-    // if (updateDT) {
-    //   message.success('This is a success message');
-    // }
   }
 
   const deleteUser = (id: string) => {
