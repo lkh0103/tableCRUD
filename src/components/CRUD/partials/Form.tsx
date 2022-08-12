@@ -1,25 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, Input, Upload } from "antd";
 import Toast from "../partials/Toast";
 
 export default function FormCRUD(props: any) {
 
-  const [form] = Form.useForm();
+  const [inputForm, setInputForm] = useState<any>();
 
   if (props.data) {
     useEffect(() => {
-      form.setFieldsValue(props.data);
+      props.form.setFieldsValue(props.data);
     }, [props.data]);
   }
-  const onFinish = (value: any) => {
-    form.resetFields();
-    if (!props.data) {
-      props.createUser(value)
-    }
-    else {
-      props.updateUser(value)
-    }
-  };
+
+  useEffect(() => {
+    props.onFormChange(inputForm);
+  }, [inputForm]);
 
   const layout = {
     labelCol: { span: 3 },
@@ -29,15 +24,19 @@ export default function FormCRUD(props: any) {
   return (
     <div>
       <div>
-        <Form {...layout} form={form} onFinish={onFinish}>
-          {props.title.map((item: any, index: number) => (
+        <Form
+          {...layout}
+          form={props.form}
+          onValuesChange={(changedValues, allValues) => {
+            setInputForm(allValues);
+          }}
+        >
+          {props.title.map((item: any) => (
             <Form.Item key={item} name={item} label={item} rules={[{ required: true }]}>
               <Input />
             </Form.Item>
           ))}
         </Form>
-        {/* <Button onClick={form.submit}>Submit</Button> */}
-        <Toast />
       </div>
     </div>
   );

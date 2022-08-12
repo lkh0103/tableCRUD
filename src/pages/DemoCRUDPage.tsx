@@ -132,9 +132,9 @@ export function DemoCRUDPage() {
             onCreated={onCreated}
             onUpdated={onUpdated}
             onRemove={onRemove}
-            formComponent={(onChange, data) => (
-                <TestFormEdit onChange={onChange} data={data} />
-            )}
+        // formComponent={(onChange, data) => (
+        //     <TestFormEdit onChange={onChange} data={data} />
+        // )}
         />
     )
 }

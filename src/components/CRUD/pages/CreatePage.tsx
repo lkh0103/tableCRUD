@@ -1,24 +1,30 @@
-import { Button } from "antd";
-import React from "react";
+import { Button, Form } from "antd";
+import React, { useState } from "react";
 import { useCRUD } from "../hooks/CRUDProvider";
 import FormCRUD from "../partials/Form";
 import FormShema from "../partials/FormSchema";
 import Title from "../partials/Title";
 
-export default function CreatePage(props: any) {
+interface CreatePageProps {
+  formSchema: any;
+  formComponent: any;
+}
+
+export default function CreatePage(props: CreatePageProps) {
 
   const { data, createData } = useCRUD();
   const [form] = Form.useForm();
   const [dataInput, setDataInput] = useState<any>();
 
   const handleSubmit = () => {
+    form.resetFields();
+    form.validateFields()
     createData(dataInput)
   };
 
   const onFormChange = (data: any) => {
     setDataInput(data);
   };
-
 
   return (
     <div>

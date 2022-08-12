@@ -1,16 +1,30 @@
-import React from 'react'
+import { Button, Form } from 'antd'
+import React, { useState } from 'react'
 import { useCRUD } from '../hooks/CRUDProvider'
 import FormCRUD from '../partials/Form'
 import FormShema from '../partials/FormSchema'
 import ModalCRUD from '../partials/Modal'
 import Title from '../partials/Title'
 
-export default function UpdatePage(props: any) {
+interface UpdatePageProps {
+  dataEdit: any;
+  formComponent: any;
+}
 
+export default function UpdatePage(props: UpdatePageProps) {
+
+  const [dataInput, setDataInput] = useState<any>();
   const { data, updateData, deleteData } = useCRUD();
-  const updateUser = (value: any) => {
-    updateData(value)
-  }
+  const [form] = Form.useForm();
+
+  const onFormChange = (data: any) => {
+    setDataInput(data);
+  };
+
+  const handleUpdate = () => {
+    form.resetFields();
+    updateData(dataInput);
+  };
 
   const deleteUser = (id: string) => {
     deleteData(id)
@@ -19,15 +33,19 @@ export default function UpdatePage(props: any) {
   return (
     <div>
       <Title />
-      {props.schemaForm ? (
-        <FormShema propsFormSchema={props.schemaForm} />
+      {props.formComponent ? (
+        <FormShema formComponent={props.formComponent} />
       ) : (
         <FormCRUD
+          form={form}
           data={props.dataEdit.rows}
           title={Object.keys(data[0])}
-          updateUser={updateUser}
+          onFormChange={onFormChange}
         />
       )}
+      <Button type="primary" style={{ margin: 15 }} onClick={handleUpdate}>
+        Update
+      </Button>
       <ModalCRUD
         data={props.dataEdit.rows}
         delData={deleteUser}
