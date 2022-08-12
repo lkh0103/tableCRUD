@@ -18,8 +18,6 @@ export function DemoCRUDPage() {
         console.log('response', response)
         if (response.username && response.avatar && response.email && response.password && response.registeredAt) {
             message.success('Data Create "Success"');
-        } else {
-            message.error('Please fill in the blanks')
         }
         return Promise.resolve(response)
     }
@@ -29,8 +27,6 @@ export function DemoCRUDPage() {
         console.log(resUpdateApi)
         if (resUpdateApi.id) {
             message.success('Data Update "Success"')
-        } else {
-            message.error('Data has been updated')
         }
         return Promise.resolve(resUpdateApi)
     }
@@ -109,6 +105,19 @@ export function DemoCRUDPage() {
 
     const schema = null
 
+    const onCreated = () => {
+        console.log('1');
+    }
+
+    const onUpdated = () => {
+        console.log('2');
+    }
+
+    const onRemove = () => {
+        console.log('3');
+    }
+
+
     return (
         <CRUD
             name="demo"
@@ -120,6 +129,12 @@ export function DemoCRUDPage() {
             formSchema={schema}
             dataEdit={dataEdit}
             renderTitle={(ctx: any) => <h1>{ctx}</h1>}
+            onCreated={onCreated}
+            onUpdated={onUpdated}
+            onRemove={onRemove}
+            formComponent={(onChange, data) => (
+                <TestFormEdit onChange={onChange} data={data} />
+            )}
         />
     )
 }

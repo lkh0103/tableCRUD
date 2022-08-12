@@ -1,5 +1,4 @@
 import React from 'react'
-import { Alert, message } from 'antd'
 import { useCRUD } from '../hooks/CRUDProvider'
 import FormCRUD from '../partials/Form'
 import FormShema from '../partials/FormSchema'
@@ -8,7 +7,6 @@ import Title from '../partials/Title'
 
 export default function UpdatePage(props: any) {
 
-  // const [error, setError] = useState<string>('')
   const { data, updateData, deleteData } = useCRUD();
   const updateUser = (value: any) => {
     updateData(value)
@@ -21,11 +19,6 @@ export default function UpdatePage(props: any) {
   return (
     <div>
       <Title />
-      {/* {
-        error && (
-          <Alert message={error} type="error" />
-        )
-      } */}
       {props.schemaForm ? (
         <FormShema propsFormSchema={props.schemaForm} />
       ) : (

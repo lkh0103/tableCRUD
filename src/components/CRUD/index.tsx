@@ -33,20 +33,28 @@ export interface CRUDProps {
     columns: any[]
     formSchema: any
     dataEdit: any
-    renderTitle(ctx: any): React.ReactNode 
+    renderTitle(ctx: any): React.ReactNode
+    formComponent?: (onChange: any, data: any) => void;
+    onCreated: any
+    onUpdated: any
+    onRemove: any
 }
 
 export default function CRUD(props: CRUDProps) {
-    
+
     const params = useParams()
     const renderContent = useCallback(() => {
         switch (params.id) {
             case 'create':
-                return <CreatePage formSchema={props.formSchema} />
+                return <CreatePage
+                    formSchema={props.formSchema}
+                    formComponent={props.formComponent} />
             case undefined:
-                return <ListPage renderTitle={props.renderTitle}/>
+                return <ListPage renderTitle={props.renderTitle} />
             default:
-                return <UpdatePage dataEdit={props.dataEdit} />
+                return <UpdatePage
+                    dataEdit={props.dataEdit}
+                    formComponent={props.formComponent} />
         }
     }, [params.id])
 

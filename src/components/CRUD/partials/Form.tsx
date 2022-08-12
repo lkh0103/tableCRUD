@@ -36,7 +36,7 @@ export default function FormCRUD(props: any) {
             </Form.Item>
           ))}
         </Form>
-        <Button onClick={form.submit}>Submit</Button>
+        {/* <Button onClick={form.submit}>Submit</Button> */}
         <Toast />
       </div>
     </div>
