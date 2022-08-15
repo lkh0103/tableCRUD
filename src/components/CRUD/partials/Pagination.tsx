@@ -1,7 +1,14 @@
 import React from "react";
 import { Pagination } from "antd";
 
-export default function CURDPagiantion(props: any) {
+interface CRUDPaginationProps {
+  defaultCurrent: number,
+  total: number,
+  pageSize: number,
+  onPageChange: (page: number, pageSize: number) => void
+}
+
+export default function CURDPagiantion(props: CRUDPaginationProps) {
 
   return (
     <Pagination

@@ -18,7 +18,7 @@ export default function CreatePage(props: CreatePageProps) {
 
   const handleSubmit = () => {
     form.resetFields();
-    // form.validateFields();
+    form.validateFields();
     if (props.formSchema) {
       createData(dataInput);
     }
@@ -57,6 +57,7 @@ export default function CreatePage(props: CreatePageProps) {
         props.formComponent(onFormChange)
       ) : (
         <FormCRUD
+          data={props.formSchema}
           form={form}
           title={Object.keys(data[0])}
           onFormChange={onFormChange}

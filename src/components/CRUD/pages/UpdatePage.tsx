@@ -13,7 +13,7 @@ interface UpdatePageProps {
 
 export default function UpdatePage(props: UpdatePageProps) {
 
-  const [dataInput, setDataInput] = useState<any>();
+  const [dataInput, setDataInput] = useState<string>();
   const { data, updateData, deleteData } = useCRUD();
   const [form] = Form.useForm();
 
@@ -27,12 +27,14 @@ export default function UpdatePage(props: UpdatePageProps) {
   }
 
   const deleteUser = (id: string) => {
+    form.resetFields()
     deleteData(id)
   }
 
   return (
     <div>
       <Title />
+
       {props.formComponent ? (
         props.formComponent(onFormChange, props.dataEdit.rows)
       ) : (
@@ -47,7 +49,8 @@ export default function UpdatePage(props: UpdatePageProps) {
       <Button type="primary" style={{ margin: 15 }} onClick={handleUpdate}>
         Update
       </Button>
-      <ModalCRUD data={props.dataEdit.rows} deleteData={deleteUser} />
+
+      <ModalCRUD data={props.dataEdit.rows} deleteUser={deleteUser} />
     </div>
   )
 }

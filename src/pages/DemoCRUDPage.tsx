@@ -3,8 +3,6 @@ import CRUD from "../components/CRUD"
 import { Avatar, Image, message } from "antd"
 import { Link } from "react-router-dom"
 import { create, findId, list, remove, update } from "../libs/DataStore"
-import FormCRUD from "../components/CRUD/partials/Form"
-import FormShema from "../components/CRUD/partials/FormSchema"
 
 export function DemoCRUDPage() {
     const [dataEdit, setDataEdit] = useState<any>();
@@ -49,18 +47,17 @@ export function DemoCRUDPage() {
 
     const columns: any = [
         {
-            title: 'id',
+            title: 'ID',
             dataIndex: 'id',
             key: 'id',
-
         },
         {
-            title: 'username',
+            title: 'Username',
             dataIndex: 'username',
             key: 'id',
         },
         {
-            title: 'email',
+            title: 'Email',
             dataIndex: 'email',
             key: 'id',
             render: (value: any) => {
@@ -68,12 +65,12 @@ export function DemoCRUDPage() {
             }
         },
         {
-            title: 'registeredAt',
+            title: 'RegisteredAt',
             dataIndex: 'registeredAt',
             key: 'age',
         },
         {
-            title: 'avatar',
+            title: 'Avatar',
             dataIndex: 'avatar',
             key: 'avatar',
             width: "10%",
@@ -136,9 +133,9 @@ export function DemoCRUDPage() {
             onCreated={onCreated}
             onUpdated={onUpdated}
             onRemove={onRemove}
-            // formComponent={(onChange, data) => (
-            //     <FormShema onChange={onChange} data={data} />
-            // )}
+        // formComponent={(onChange, data) => (
+        //     <FormShema onChange={onChange} data={data} />
+        // )}
         />
     )
 }

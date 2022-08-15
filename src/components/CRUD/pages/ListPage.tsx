@@ -7,28 +7,27 @@ import CRUDSearch from '../partials/Search'
 import { CRUDTable } from '../partials/Table'
 import Title from '../partials/Title'
 
-export default function ListPage(props: any) {
+interface ListPageProps {
+  renderTitle: any
+}
+
+export default function ListPage(props: ListPageProps) {
   const { columns, loadData, pagination, params, setParams, data } = useCRUD();
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(loadData, [params]);
 
-  const onPageChange = (page: any, pageSize: any) => {
-    setSearchParams({ searchPage: page })
+  const onPageChange = (page: number, pageSize: number) => {
+    setSearchParams({ page: String(page) })
     setParams({
-      ...params,
-      page,
-      limit: pageSize
+      ...params, page, limit: pageSize
     });
   };
 
   const onSearch = (search: string, page: number) => {
     setSearchParams({ search: search })
     setParams({
-      ...params,
-      searchParams,
-      page,
-      search
+      ...params, searchParams, page, search
     });
   };
 
@@ -42,19 +41,25 @@ export default function ListPage(props: any) {
   return (
     <div>
       {renderTitle()}
+
       <Button style={{ float: 'right' }}>
         <Link to="/demo/create">Create User</Link>
-      </Button><br /><br /><br />
-      <CRUDSearch onSearchUser={onSearch} />
-      <CRUDTable columns={columns} dataSource={data} />
-      {pagination.total > 0 && (
-        <CURDPagiantion
-          defaultCurrent={pagination.page} // Trang mặc định
-          total={pagination.total * pagination.totalPages} // tổng all phần tử
-          pageSize={pagination.total} // bao nhiêu phần tử trên 1 trang sau khi ng dùng chỉnh sửa
-          onPageChange={onPageChange} // chuyển phân trangg
-        />
-      )} <br /><br />
+      </Button> <br /><br />
+
+      <CRUDSearch onSearchUser={onSearch} /> <br /><br />
+
+      <CRUDTable columns={columns} dataSource={data} /> <br /><br />
+
+      {
+        pagination.total > 0 && (
+          <CURDPagiantion
+            defaultCurrent={pagination.page}
+            total={pagination.total * pagination.totalPages}
+            pageSize={pagination.total}
+            onPageChange={onPageChange}
+          />
+        )
+      }
     </div>
   )
 }

@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form, Input, Upload } from "antd";
+import { Button, Form, Input } from "antd";
 
-export default function FormCRUD(props: any) {
+interface FormCRUDProps {
+  data: object,
+  title: any,
+  form: any,
+  onFormChange: any
+}
+
+export default function FormCRUD(props: FormCRUDProps) {
 
   const [inputForm, setInputForm] = useState<any>();
 

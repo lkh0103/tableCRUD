@@ -1,5 +1,4 @@
 import { faker } from '@faker-js/faker'
-import { message } from 'antd'
 
 interface User {
     id: string
