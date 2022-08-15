@@ -52,7 +52,7 @@ export default function ListPage(props: any) {
           defaultCurrent={pagination.page} // Trang mặc định
           total={pagination.total * pagination.totalPages} // tổng all phần tử
           pageSize={pagination.total} // bao nhiêu phần tử trên 1 trang sau khi ng dùng chỉnh sửa
-          onPageChange={onPageChange} // chuyển phân trang
+          onPageChange={onPageChange} // chuyển phân trangg
         />
       )} <br /><br />
     </div>

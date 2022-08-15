@@ -18,8 +18,30 @@ export default function CreatePage(props: CreatePageProps) {
 
   const handleSubmit = () => {
     form.resetFields();
-    form.validateFields()
-    createData(dataInput)
+    // form.validateFields();
+    if (props.formSchema) {
+      createData(dataInput);
+    }
+    if (props.formComponent) {
+      createData(dataInput);
+    } else {
+      if (
+        dataInput.id === undefined ||
+        dataInput.username === undefined ||
+        dataInput.email === undefined ||
+        dataInput.password === undefined ||
+        dataInput.avatar === undefined ||
+        dataInput.registeredAt === undefined
+      ) {
+        !form.isFieldsTouched(true) ||
+          form.getFieldsError().filter(({ errors }) => errors.length).length > 0;
+      } else {
+        if (dataInput) {
+          createData(dataInput);
+          setDataInput(null);
+        }
+      }
+    }
   };
 
   const onFormChange = (data: any) => {
@@ -30,7 +52,9 @@ export default function CreatePage(props: CreatePageProps) {
     <div>
       <Title />
       {props.formSchema ? (
-        <FormShema propsFormSchema={props.formSchema} />
+        <FormShema formSchema={props.formSchema} setDataInput={setDataInput} />
+      ) : props.formComponent ? (
+        props.formComponent(onFormChange)
       ) : (
         <FormCRUD
           form={form}

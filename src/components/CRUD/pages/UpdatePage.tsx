@@ -24,7 +24,7 @@ export default function UpdatePage(props: UpdatePageProps) {
   const handleUpdate = () => {
     form.resetFields();
     updateData(dataInput);
-  };
+  }
 
   const deleteUser = (id: string) => {
     deleteData(id)

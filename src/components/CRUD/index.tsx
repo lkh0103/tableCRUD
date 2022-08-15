@@ -31,7 +31,7 @@ export interface CRUDProps {
     updateUser: (params: any) => any
     removeUser: (id: string) => any
     columns: any[]
-    formSchema: any
+    formSchema?: any
     dataEdit: any
     renderTitle(ctx: any): React.ReactNode
     formComponent?: (onChange: any, data: any) => void;

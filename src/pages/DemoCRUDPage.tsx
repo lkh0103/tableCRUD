@@ -3,6 +3,8 @@ import CRUD from "../components/CRUD"
 import { Avatar, Image, message } from "antd"
 import { Link } from "react-router-dom"
 import { create, findId, list, remove, update } from "../libs/DataStore"
+import FormCRUD from "../components/CRUD/partials/Form"
+import FormShema from "../components/CRUD/partials/FormSchema"
 
 export function DemoCRUDPage() {
     const [dataEdit, setDataEdit] = useState<any>();
@@ -18,6 +20,7 @@ export function DemoCRUDPage() {
         console.log('response', response)
         if (response.username && response.avatar && response.email && response.password && response.registeredAt) {
             message.success('Data Create "Success"');
+            onCreated()
         }
         return Promise.resolve(response)
     }
@@ -27,6 +30,7 @@ export function DemoCRUDPage() {
         console.log(resUpdateApi)
         if (resUpdateApi.id) {
             message.success('Data Update "Success"')
+            onUpdated()
         }
         return Promise.resolve(resUpdateApi)
     }
@@ -36,6 +40,7 @@ export function DemoCRUDPage() {
         console.log(delApi);
         if (delApi.id) {
             message.success('Data Delete "Success"')
+            onRemove()
         } else {
             message.error('Not Found User')
         }
@@ -93,30 +98,29 @@ export function DemoCRUDPage() {
         return Promise.resolve(response);
     }
 
-    // const schema = {
-    //     title: "Todo",
-    //     type: "object",
-    //     required: ["title"],
-    //     properties: {
-    //         title: { type: "string", title: "Title", default: "A new task" },
-    //         done: { type: "boolean", title: "Done?", default: false }
-    //     }
-    // };
+    const schema = {
+        title: "Todo",
+        type: "object",
+        required: ["title"],
+        properties: {
+            title: { type: "string", title: "Title", default: "A new task" },
+            done: { type: "boolean", title: "Done?", default: false }
+        }
+    };
 
-    const schema = null
+    // const schema = null
 
     const onCreated = () => {
-        console.log('1');
+        console.log('Create Success');
     }
 
     const onUpdated = () => {
-        console.log('2');
+        console.log('Update Success');
     }
 
     const onRemove = () => {
-        console.log('3');
+        console.log('Del Success');
     }
-
 
     return (
         <CRUD
@@ -126,15 +130,15 @@ export function DemoCRUDPage() {
             updateUser={updateApi}
             removeUser={removeApi}
             columns={columns}
-            formSchema={schema}
+            // formSchema={schema}
             dataEdit={dataEdit}
             renderTitle={(ctx: any) => <h1>{ctx}</h1>}
             onCreated={onCreated}
             onUpdated={onUpdated}
             onRemove={onRemove}
-        // formComponent={(onChange, data) => (
-        //     <TestFormEdit onChange={onChange} data={data} />
-        // )}
+            // formComponent={(onChange, data) => (
+            //     <FormShema onChange={onChange} data={data} />
+            // )}
         />
     )
 }
