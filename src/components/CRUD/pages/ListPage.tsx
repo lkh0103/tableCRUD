@@ -8,7 +8,7 @@ import { CRUDTable } from '../partials/Table'
 import Title from '../partials/Title'
 
 interface ListPageProps {
-  renderTitle: any
+  renderTitle: (ctx: any) => React.ReactNode
 }
 
 export default function ListPage(props: ListPageProps) {
