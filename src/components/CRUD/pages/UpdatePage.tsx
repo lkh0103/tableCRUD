@@ -34,22 +34,20 @@ export default function UpdatePage(props: UpdatePageProps) {
     <div>
       <Title />
       {props.formComponent ? (
-        <FormShema formComponent={props.formComponent} />
+        props.formComponent(onFormChange, props.dataEdit.rows)
       ) : (
         <FormCRUD
           form={form}
-          data={props.dataEdit.rows}
           title={Object.keys(data[0])}
+          data={props.dataEdit.rows}
           onFormChange={onFormChange}
         />
       )}
+
       <Button type="primary" style={{ margin: 15 }} onClick={handleUpdate}>
         Update
       </Button>
-      <ModalCRUD
-        data={props.dataEdit.rows}
-        delData={deleteUser}
-      />
+      <ModalCRUD data={props.dataEdit.rows} deleteData={deleteUser} />
     </div>
   )
 }
