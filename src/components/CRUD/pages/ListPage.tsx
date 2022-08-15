@@ -9,7 +9,7 @@ import Title from '../partials/Title'
 
 interface ListPageProps {
   renderTitle: (ctx: any) => React.ReactNode
-}
+} // note
 
 export default function ListPage(props: ListPageProps) {
   const { columns, loadData, pagination, params, setParams, data } = useCRUD();
