@@ -2,13 +2,12 @@ import { Button, Form } from 'antd'
 import React, { useState } from 'react'
 import { useCRUD } from '../hooks/CRUDProvider'
 import FormCRUD from '../partials/Form'
-import FormShema from '../partials/FormSchema'
 import ModalCRUD from '../partials/Modal'
 import Title from '../partials/Title'
 
 interface UpdatePageProps {
   dataEdit: any;
-  formComponent: any;
+  formComponent: any
 }
 
 export default function UpdatePage(props: UpdatePageProps) {

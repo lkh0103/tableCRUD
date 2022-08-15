@@ -5,7 +5,7 @@ interface FormCRUDProps {
   data: object,
   title: any,
   form: any,
-  onFormChange: any
+  onFormChange: (data: any) => void
 }
 
 export default function FormCRUD(props: FormCRUDProps) {
