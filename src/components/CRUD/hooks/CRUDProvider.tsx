@@ -7,7 +7,6 @@ interface CRUDContext {
     columns: any[];
     list: any;
     getData: any;
-    title: any;
     pagination: any;
     loadData: any;
     params: any;
@@ -21,7 +20,6 @@ interface CRUDContext {
 export const CRUDContext = createContext<CRUDContext>({} as any);
 export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
     const [list, setList] = useState<any>();
-    const [title, setTitle] = useState<any>();
     const [data, setData] = useState<any>();
     const [params, setParams] = useState<any>({
         page: 1,
@@ -93,7 +91,6 @@ export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
 
     const contextvalueCRUD = {
         list,
-        title,
         getData,
         fetchList,
         loadData,
